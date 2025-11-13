@@ -1,0 +1,169 @@
+---
+title: 'Docker Image'
+description: 'Deploying Xyne on AWS'
+icon: 'docker'
+---
+
+<Tip>We recommend using EC2 Instance for the deployment as it is the simplest to set-up.</Tip>
+
+If you want to deploy Xyne on AWS instead of your local machine, this document will give you a detailed guide to do so.
+Follow the steps listed below to get started : 
+
+## Connect to the instance remotely: 
+Once you have your instance up and running, you can use your terminal to connect to (```ssh``` into) your instance remotely. 
+
+
+## Install the required dependencies : 
+Deployment of Xyne on AWS EC2 using docker image requires you to only install Docker and Docker Compose:
+
+
+- [Docker](https://docs.docker.com/engine/install/) 
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+Once you have installed the dependencies, you can use the following steps to set up the instance.
+
+<Warning>Ensure you have an instance with enough storage to store the dependencies and run the Xyne Application</Warning>
+
+
+## Clone the repository : 
+
+Use the following git command to clone the Xyne repository.
+```javascript
+git clone https://github.com/xynehq/xyne.git
+```
+
+### Pre Execution Setup [Environment Variables]:
+
+For enabling Google Authentication for your application you need to create your google credentials and setup some environment variables: 
+
+You can obtain the ```GOOGLE_CLIENT_ID``` and ```GOOGLE_SECRET``` by following guide : 
+<Card
+  title="Setup Google Credentials"
+  icon="google"
+  href="/authentication/get-credentials"
+>
+Setup your Google Credentials for the application.
+</Card>
+
+#### Server side: 
+Inside the ```server``` folder of the ```xyne``` folder, you will find a ```.env.default``` file, this is the .env file that our docker uses.
+For the moment you will find some default generated environment variables that we've set up for the app to work.
+
+<Warning> We strictly recommend generating your own ***ENCRYPTION_KEY, SERVICE_ACCOUNT_ENCRYPTION_KEY and JWT_SECRET*** values for security.</Warning>
+
+
+<Tip>Due to our agentic RAG implementation, the maximum TPM limit exceeds for Open AI's gpt4o model. 
+ For the ***best experience***, we recommend using ***AWS Bedrock or Claude***, as it enhances performance and accuracy. </Tip>
+
+In the ```.env.default``` file, you can modify the following and replace the missing values with your own :
+
+```javascript .env.default file
+ENCRYPTION_KEY=<YOUR_ENCRYPTION_KEY>
+SERVICE_ACCOUNT_ENCRYPTION_KEY=<YOUR_SERVICE_ACCOUNT_ENCRYPTION_KEY> 
+
+  
+GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
+GOOGLE_CLIENT_SECRET=<YOUR_GOOGLE_CLIENT_SECRET>
+GOOGLE_REDIRECT_URI=http://localhost:3001/v1/auth/callback
+GOOGLE_PROD_REDIRECT_URI=<YOUR_Public_IPv4_DNS_ADDRESS>/v1/auth/callback
+
+JWT_SECRET=<YOUR_JWT_SECRET>
+
+
+DATABASE_HOST=xyne-db
+VESPA_HOST=vespa
+
+
+## If using AWS Bedrock
+AWS_ACCESS_KEY=<YOUR_AWS_ACCESS_KEY>
+AWS_SECRET_KEY=<YOUR_AWS_ACCESS_SECRET>
+AWS_REGION=<YOUR_AWS_REGION>
+  
+## OR [ If using Open AI ]
+OPENAI_API_KEY=<YOUR_OPEN_API_KEY>
+
+## OR [ If using Ollama ] 
+OLLAMA_MODEL=<YOUR_OLLAMA_MODEL_NAME> 
+
+## OR  [ If using Together AI ] 
+TOGETHER_API_KEY=<YOUR_TOGETHER_API_KEY>
+TOGETHER_MODEL=<YOUR_TOGETHER_MODEL>
+TOGETHER_FAST_MODEL=<YOUR_TOGETHER_FAST_MODEL>
+
+## OR  [ If using Fireworks AI ] 
+FIREWORKS_API_KEY=<YOUR_FIREWORKS_API_KEY>
+FIREWORKS_MODEL=<YOUR_FIREWORKS_MODEL>
+FIREWORKS_FAST_MODEL=<YOUR_FIREWORKS_FAST_MODEL>
+
+## OR [If using Google AI]
+GEMINI_API_KEY=<YOUR_GEMINI_API_KEY> 
+GEMINI_MODEL=<YOUR_GEMINI_MODEL_NAME>  
+
+## If you are using custom OpenAI or Together AI endpoints
+BASE_URL=<YOUR_BASE_URL>
+HOST=<YOUR_Public_IPv4_DNS_ADDRESS>
+```
+
+<Warning> Ensure that these IPv4 address is the same as the one you've added in your Google Cloud Project</Warning>
+
+
+<Tip>To use the chat feature of Xyne, you need any one AI provider (AWS, Ollama, OpenAI Together AI or Fireworks AI). Missing keys will disable chat functionality.</Tip>
+
+You can checkout the AI Providers section for better clarity : 
+
+<Card
+  title="Setup AI Providers for Xyne"
+  icon="key"
+  href="/apikeys/apikeys"
+>
+Setup your AI Provider.
+</Card>
+
+<Warning> Chat will be unavailable without a Service Account or OAuth Account connection. </Warning>
+
+## Deploy Xyne with Docker  :
+
+Run the following command to run the application :
+```javascript 
+docker-compose -f deployment/docker-compose.selfhost.yml up 
+```
+
+### Your application is now deployed : 
+
+Your application is now running and will be available in your EC2 Public IPv4 DNS address.
+
+
+### Post Execution Setup [ Frontend Environment Variables]
+After you have deployed your application, you need to setup some frontend variables for your application.
+For this create a ```.env.production``` in your application, and then add the following :
+
+```javascript
+ VITE_API_BASE_URL=http://<YOUR_AWS_INSTANCE_IPv4_DNS>
+ VITE_WS_BASE_URL=wss://<YOUR_AWS_INSTANCE_IPv4_DNS>
+```
+
+<Warning> Ensure that these IPv4 address is the same as the one you've added in your Google Cloud Project</Warning>
+Save the file.
+
+Now you need to add this to the docker container running the app, for this use :
+
+```javascript
+docker cp /path/to/your/.env.production xyne-app:usr/src/app/frontend/.env.production
+```
+
+And then rebuild the frontend using :
+
+```javascript
+docker exec -it xyne-app sh -c "cd /usr/src/app/frontend && bun run build"
+```
+
+## Ingesting data 
+Follow the guide below to learn more about ingesting data into Xyne app: 
+
+<Card
+  title="Ingest data in Xyne app"
+  icon="inbox-in"
+  href="/ingestion/ingestion"
+>
+Ingest data into Xyne app.
+</Card>

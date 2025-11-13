@@ -1,0 +1,189 @@
+---
+title: 'Quickstart' 
+description: 'Get started with Xyne Locally'
+icon: 'rocket'
+---
+
+### Guides :
+<CardGroup>
+<Card
+  title="Step 1 : Quickstart the application." 
+  icon="rocket"
+  href="/quickstart"
+>
+Use quickstart to reach the login screen.
+</Card>
+<Card
+  title="Step 2 : Generate Google Credentials And Add Scopes." 
+  icon="lock-open"
+  href="/authentication/get-credentials"
+>
+Set-up your google credentials and add scopes.
+</Card>
+<Card
+  title="Step 3 : Add AI provider" 
+  icon="comment-code"
+  href="/apikeys/apikeys"
+>
+Add AI Provider of your choice to use Chat.
+</Card>
+<Card
+  title="Step 4 : Ingest Your Data" 
+  icon="rotate"
+  href="/ingestion/ingestion"
+>
+Ingest your Data into the Xyne App.
+</Card>
+</CardGroup>
+
+
+If you want to deploy Xyne using your local machine, this document will give you a detailed guide to do so.
+Follow the steps listed below to get started : 
+
+## Install the required dependencies : 
+Deployment of Xyne requires you to only install Docker and Docker Compose:
+
+- [Docker](https://docs.docker.com/engine/install/) 
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+Once you have installed the dependencies, you can use the following steps to set up the app.
+
+
+## Clone the repository : 
+
+Use the following git command to clone the xyne repository.
+```javascript
+git clone https://github.com/xynehq/xyne.git
+```
+
+## Deploy Xyne with Docker  :
+
+<Tip> Remember to ensure that your Docker service is running. Incase you're using Docker Desktop, ensure that is running too </Tip>
+
+<Tip> If you have postgres running, we suggest you kill the process before starting docker </Tip>
+
+Run the application with the following command from the ```xyne``` folder:
+```javascript 
+docker-compose -f deployment/docker-compose.yml up
+```
+
+And that is all 🎉 ! The app will now be available in port ```3001```.  [Go to xyne](http://localhost:3001/)
+
+<Note> Since the size of the downloading models can be quite large, wait for the application to start running, this can take around 10 - 15 minutes, 
+depending on your internet connection. </Note>
+
+<Tip> You can also choose to follow the [Step guide](https://docs.xynehq.com/quickstart#guides) mentioned above</Tip>
+### Post Execution Setup [Environment Variables]:
+
+To unlock the full potential of the Xyne app, you need to enable Google Authentication. This requires setting up your Google credentials first.
+
+#### Taking down docker-compose
+First, bring down the Docker Compose setup using: 
+
+```javascript 
+docker-compose -f deployment/docker-compose.yml down
+```
+#### Getting Google Credentials
+Then proceed to obtain your ```GOOGLE_CLIENT_ID``` and ```GOOGLE_SECRET``` by following this guide:
+<Card
+  title="Setup Google Credentials"
+  icon="google"
+  href="/authentication/get-credentials"
+>
+Setup your Google Credentials for the application.
+</Card>
+
+#### Setting the environment variables: 
+Inside the ```server``` folder of the ```xyne``` folder, you will find a ```.env.default``` file, this is the environment file that our docker uses.
+For the moment you will find some default generated environment variables that we've set up for the app to work.
+
+
+<Warning> We strictly recommend generating your own ***ENCRYPTION_KEY, SERVICE_ACCOUNT_ENCRYPTION_KEY and JWT_SECRET*** values for security.</Warning>
+
+
+<Tip>Due to our agentic RAG implementation, the maximum TPM limit exceeds for Open AI's gpt4o model. 
+ For the ***best experience***, we recommend using ***AWS Bedrock or Claude***, as it enhances performance and accuracy. </Tip>
+
+In the ```.env.default``` file, you can modify the following and replace the missing values with your own :
+
+```javascript .env.default file
+ENCRYPTION_KEY=<YOUR_ENCRYPTION_KEY>
+SERVICE_ACCOUNT_ENCRYPTION_KEY=<YOUR_SERVICE_ACCOUNT_ENCRYPTION_KEY> 
+  
+
+GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
+GOOGLE_CLIENT_SECRET=<YOUR_GOOGLE_CLIENT_SECRET>
+GOOGLE_REDIRECT_URI=http://localhost:3000/v1/auth/callback
+GOOGLE_PROD_REDIRECT_URI=http://localhost:3001/v1/auth/callback
+
+
+JWT_SECRET=<YOUR_JWT_SECRET>
+
+
+DATABASE_HOST=xyne-db
+VESPA_HOST=vespa
+
+## If using AWS Bedrock
+AWS_ACCESS_KEY=<YOUR_AWS_ACCESS_KEY>
+AWS_SECRET_KEY=<YOUR_AWS_ACCESS_SECRET>
+AWS_REGION=<YOUR_AWS_REGION>
+  
+## OR [ If using Open AI ]
+OPENAI_API_KEY=<YOUR_OPEN_API_KEY>
+
+## OR [ If using Ollama ] 
+OLLAMA_MODEL=<YOUR_OLLAMA_MODEL_NAME> 
+
+## OR  [ If using Together AI ] 
+TOGETHER_API_KEY=<YOUR_TOGETHER_API_KEY>
+TOGETHER_MODEL=<YOUR_TOGETHER_MODEL>
+TOGETHER_FAST_MODEL=<YOUR_TOGETHER_FAST_MODEL>
+
+## OR  [ If using Fireworks AI ] 
+FIREWORKS_API_KEY=<YOUR_FIREWORKS_API_KEY>
+FIREWORKS_MODEL=<YOUR_FIREWORKS_MODEL>
+FIREWORKS_FAST_MODEL=<YOUR_FIREWORKS_FAST_MODEL>
+
+## OR [If using Google AI]
+GEMINI_API_KEY=<YOUR_GEMINI_API_KEY> 
+GEMINI_MODEL=<YOUR_GEMINI_MODEL_NAME>  
+
+## If you are using custom OpenAI or Together AI endpoints
+BASE_URL=<YOUR_BASE_URL>
+
+HOST=http://localhost:3001
+```
+
+<Tip>To use the chat feature of Xyne, you need any one AI provider (AWS, Ollama, OpenAI Together AI or Fireworks AI). Missing keys will disable chat functionality.</Tip>
+
+You can checkout the AI Providers section for better clarity : 
+
+<Card
+  title="Setup AI Providers for Xyne"
+  icon="key"
+  href="/apikeys/apikeys"
+>
+Setup your AI Provider.
+</Card>
+
+<Warning> Chat will be unavailable without a Service Account or OAuth Account connection. </Warning>
+
+And build the container again from the ``xyne`` folder using : 
+
+```javascript 
+docker-compose -f deployment/docker-compose.yml up 
+```
+
+<Note> Currently the client side has .env variables that refer to port 3001, if you've changed the port number ensure to change the values in the .env as well. </Note>
+
+## Ingesting data 
+Follow the guide below to learn more about ingesting data into xyne app: 
+
+<Card
+  title="Ingest data in Xyne app"
+  icon="inbox-in"
+  href="/ingestion/ingestion"
+>
+Ingest data into Xyne app.
+</Card>
+
