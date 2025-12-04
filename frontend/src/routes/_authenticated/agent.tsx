@@ -36,8 +36,13 @@ import {
 const DriveEntity = {
   Default: "drive_default",
   Docs: "docs",
-  Sheets: "sheets",
-  Folder: "folder"
+  Sheets: "sheets", 
+  Presentation: "presentation",
+  Folder: "folder",
+  WordDocument: "word_document",
+  PDF: "pdf",
+  Slides: "slides",
+  Image: "image"
 } as const
 interface AgentPromptPayload {
   id: string
