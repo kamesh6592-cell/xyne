@@ -18,10 +18,19 @@ import { Copy, ThumbsUp, ThumbsDown } from "lucide-react"
 import {
   SelectPublicMessage,
   ImageCitation,
-  MessageFeedback,
+  // MessageFeedback, // Temporarily commented for build
   AttachmentMetadata,
   UploadStatus,
 } from "../types/shared"
+
+// Temporary placeholder for build
+interface MessageFeedback {
+  id: string
+  messageId: string
+  userId: string  
+  rating: 'positive' | 'negative'
+  comment?: string
+}
 import { PublicUser } from "../types/shared"
 import logo from "@/assets/logo.svg"
 import { EnhancedReasoning } from "@/components/EnhancedReasoning"
