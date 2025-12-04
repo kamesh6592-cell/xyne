@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import { api } from "@/api"
 import { errorComponent } from "@/components/error"
 import { Sidebar } from "@/components/Sidebar"
-import { PublicUser, PublicWorkspace } from "shared/types"
+import { PublicUser, PublicWorkspace } from "../../../types/shared"
 import { toast } from "@/hooks/use-toast"
 // import { IntegrationsSidebar } from '@/components/IntegrationsSidebar'
 import { useTheme } from "@/components/ThemeContext"
@@ -49,7 +49,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react"
-import { Apps, UserRole } from "shared/types"
+import { Apps, UserRole } from "../../../types/shared"
 
 // Badge Component
 const Badge = ({

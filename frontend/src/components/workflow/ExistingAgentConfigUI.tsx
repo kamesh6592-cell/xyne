@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { X, ExternalLink } from "lucide-react"
 import { AgentTool } from "./Types"
-import { SelectPublicAgent } from "shared/types"
+import { SelectPublicAgent } from "../../types/shared"
 
 interface ExistingAgentConfigUIProps {
   isVisible: boolean

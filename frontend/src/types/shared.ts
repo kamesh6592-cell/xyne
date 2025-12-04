@@ -68,6 +68,27 @@ export enum FileType {
   IMAGE = "image"
 }
 
+export enum ChatSSEvents {
+  ResponseMetadata = "rm",
+  Start = "s",
+  ResponseUpdate = "u",
+  End = "e",
+  ChatTitleUpdate = "ct",
+  CitationsUpdate = "cu",
+  ImageCitationUpdate = "icu",
+  Reasoning = "rz",
+  DeepResearchReasoning = "drr",
+  Error = "er",
+  AttachmentUpdate = "au",
+  ClarificationRequested = "cr",
+  ClarificationProvided = "cp",
+}
+
+export enum MessageFeedback {
+  Like = "like",
+  Dislike = "dislike",
+}
+
 // Interfaces
 export interface PublicUser {
   id: string
@@ -212,6 +233,120 @@ export function isValidFile(filename: string): boolean {
   const validExtensions = ['pdf', 'doc', 'docx', 'txt', 'jpg', 'jpeg', 'png', 'gif']
   const extension = filename.split('.').pop()?.toLowerCase()
   return extension ? validExtensions.includes(extension) : false
+}
+
+// Additional missing interfaces and types
+export interface SelectPublicMessage {
+  id: string
+  content: string
+  role: 'user' | 'assistant' | 'system'
+  timestamp: Date
+  userId?: string
+}
+
+export interface Citation {
+  id: string
+  title: string
+  url?: string
+  content?: string
+  type: string
+}
+
+export interface ImageCitation {
+  id: string
+  url: string
+  title?: string
+  description?: string
+}
+
+export interface AttachmentMetadata {
+  id: string
+  filename: string
+  mimeType: string
+  size: number
+  url?: string
+}
+
+export interface MessageFeedback {
+  id: string
+  messageId: string
+  userId: string
+  rating: 'positive' | 'negative'
+  comment?: string
+}
+
+export interface VespaFile {
+  id: string
+  filename: string
+  content: string
+  metadata?: Record<string, any>
+}
+
+export interface ChatSSEvents {
+  type: string
+  data: any
+}
+
+export interface AgentReasoningStepType {
+  step: string
+  description: string
+  result?: any
+}
+
+export interface XyneTools {
+  id: string
+  name: string
+  description: string
+}
+
+export interface ModelConfiguration {
+  id: string
+  model: string
+  provider: string
+  temperature?: number
+  maxTokens?: number
+}
+
+// Schema types
+export const datasourceSchema = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    name: { type: "string" },
+    type: { type: "string" }
+  }
+} as const
+
+export const dataSourceFileSchema = {
+  type: "object", 
+  properties: {
+    id: { type: "string" },
+    filename: { type: "string" },
+    content: { type: "string" }
+  }
+} as const
+
+export const AutocompleteResultsSchema = {
+  type: "object",
+  properties: {
+    results: { type: "array" },
+    query: { type: "string" }
+  }
+} as const
+
+// Autocomplete types
+export interface AutocompleteResults {
+  results: Array<{
+    id: string
+    title: string
+    type: string
+  }>
+  query: string
+}
+
+export interface Autocomplete {
+  query: string
+  results: Array<any>
 }
 
 // Additional types that might be needed

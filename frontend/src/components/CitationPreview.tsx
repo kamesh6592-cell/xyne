@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useMemo } from "react"
 import { X, FileText, ExternalLink, ArrowLeft } from "lucide-react"
-import { Citation } from "shared/types"
+import { Citation } from "../types/shared"
 import PdfViewer from "./PdfViewer"
 import DocxViewer from "./DocxViewer"
 import ReadmeViewer from "./ReadmeViewer"

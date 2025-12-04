@@ -1,5 +1,5 @@
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { UserRole } from "shared/types"
+import { UserRole } from "../types/shared"
 import SlackSvg from "@/assets/slack.svg"
 import GoogleSvg from "@/assets/google-logo.svg"
 import GithubSvg from "@/assets/github.svg"

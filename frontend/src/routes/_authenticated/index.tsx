@@ -11,7 +11,7 @@ import {
   Autocomplete,
   SelectPublicAgent,
   AttachmentMetadata,
-} from "shared/types"
+} from "../../types/shared"
 import { api } from "@/api"
 import { ChatBox } from "@/components/ChatBox"
 import Sparkle from "@/assets/singleSparkle.svg?react"

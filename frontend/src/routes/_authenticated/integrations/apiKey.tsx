@@ -40,8 +40,8 @@ import { Key, Plus, Copy, Trash2, MoreHorizontal } from "lucide-react"
 import { errorComponent } from "@/components/error"
 import { authFetch } from "@/utils/authFetch"
 import { api } from "@/api"
-import { ApiKeyScopes } from "shared/types"
-import type { PublicUser, SelectPublicAgent } from "shared/types"
+import { ApiKeyScopes } from "../../../types/shared"
+import type { PublicUser, SelectPublicAgent } from "../../../types/shared"
 
 // Types
 interface ApiKeyScope {

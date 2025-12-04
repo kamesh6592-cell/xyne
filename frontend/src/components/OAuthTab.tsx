@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Apps, UserRole } from "shared/types"
+import { Apps, UserRole } from "../types/shared"
 import { LoaderContent } from "@/lib/common"
 import { OAuthIntegrationStatus } from "@/types"
 import { X } from "lucide-react"

@@ -2,7 +2,7 @@ import { z } from "zod"
 import React, { useState, useEffect } from "react"
 import { api } from "@/api"
 import { X, Search, Bot } from "lucide-react"
-import { SelectPublicAgent } from "shared/types"
+import { SelectPublicAgent } from "../../types/shared"
 
 const Logger = console
 

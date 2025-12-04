@@ -17,7 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Apps, AuthType, ConnectorStatus, UserRole } from "shared/types"
+import { Apps, AuthType, ConnectorStatus, UserRole } from "../../../../types/shared"
 import { api, wsClient } from "@/api"
 import { toast, useToast } from "@/hooks/use-toast"
 import { useForm } from "@tanstack/react-form"
@@ -27,7 +27,7 @@ import { useQuery } from "@tanstack/react-query"
 import { Connectors, OAuthIntegrationStatus } from "@/types"
 import { OAuthModal } from "@/oauth"
 import { Sidebar } from "@/components/Sidebar"
-import { PublicUser, PublicWorkspace } from "shared/types"
+import { PublicUser, PublicWorkspace } from "../../../../types/shared"
 import { errorComponent } from "@/components/error"
 import { LoaderContent } from "@/lib/common"
 import { IntegrationsSidebar } from "@/components/IntegrationsSidebar"

@@ -7,8 +7,8 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { api } from "@/api"
 import { getErrorMessage } from "@/lib/utils"
-import { Apps, ConnectorType } from "shared/types" // Added ConnectorType
-import { PublicUser, PublicWorkspace } from "shared/types"
+import { Apps, ConnectorType } from "../../../../types/shared" // Added ConnectorType
+import { PublicUser, PublicWorkspace } from "../../../../types/shared"
 import { Sidebar } from "@/components/Sidebar"
 import { IntegrationsSidebar } from "@/components/IntegrationsSidebar"
 import { RefreshCw, X, PlusCircle, Check, RotateCcw } from "lucide-react" // Added PlusCircle, Check, RotateCcw
@@ -45,7 +45,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog" // Added Dialog components
 import { useQuery } from "@tanstack/react-query"
-import { ConnectorStatus } from "shared/types"
+import { ConnectorStatus } from "../../../../types/shared"
 
 // Interface for fetched tools (copied from ChatBox.tsx)
 interface FetchedTool {

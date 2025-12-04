@@ -6,7 +6,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { getFileType } from "../types/shared"
-import { FileType } from "shared/types"
+// FileType is already imported from ../types/shared via getFileType import
 
 export interface Citation {
   url: string

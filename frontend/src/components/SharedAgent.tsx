@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-import { SelectPublicAgent } from "shared/types"
+import { SelectPublicAgent } from "../types/shared"
 import { api } from "@/api"
 import { Button } from "./ui/button"
 import { ArrowLeft } from "lucide-react"

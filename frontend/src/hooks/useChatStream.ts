@@ -8,7 +8,7 @@ import {
   Citation,
   SelectPublicMessage,
   ImageCitation,
-} from "shared/types"
+} from "../types/shared"
 import { toast } from "@/hooks/use-toast"
 import { ToolsListItem } from "@/types"
 import { CharacterAnimationManager } from "@/utils/streamRenderer"

@@ -30,7 +30,7 @@ import {
   type AttachmentMetadata,
   AgentPromptPayload,
   DEFAULT_TEST_AGENT_ID,
-} from "shared/types"
+} from "../../types/shared"
 import {
   ChevronDown,
   ChevronUp,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import { ChevronRight, Loader2, FileText, Users, Brain } from "lucide-react"
 import { cn, splitGroupedCitationsWithSpaces } from "@/lib/utils"
-import { AgentReasoningStepType, Citation, XyneTools, Apps } from "shared/types"
+import { AgentReasoningStepType, Citation, XyneTools, Apps } from "../types/shared"
 import MarkdownPreview from "@uiw/react-markdown-preview"
 import { useTheme } from "@/components/ThemeContext"
 import DriveIcon from "@/assets/drive.svg?react"

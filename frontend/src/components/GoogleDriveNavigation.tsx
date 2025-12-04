@@ -1,9 +1,9 @@
 import React, { useMemo } from "react"
 import { ChevronRight } from "lucide-react"
-import { Apps, DriveEntity } from "shared/types"
+import { Apps, DriveEntity } from "../types/shared"
 import { getIcon } from "@/lib/common"
 import { api } from "@/api"
-import { VespaFile } from "shared/types"
+import { VespaFile } from "../types/shared"
 
 function isItemSelectedWithInheritance(
   itemId: string,

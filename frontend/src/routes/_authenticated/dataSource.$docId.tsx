@@ -2,7 +2,7 @@ import { DataSourceViewer } from "@/components/DataSourceViewer"
 import { errorComponent } from "@/components/error"
 import { createFileRoute, useLoaderData } from "@tanstack/react-router"
 import { api } from "@/api"
-import { VespaGetResult, VespaDataSourceFile, Apps } from "shared/types"
+import { VespaGetResult, VespaDataSourceFile, Apps } from "../../types/shared"
 
 type LoaderData = VespaGetResult | { error: any } | null
 

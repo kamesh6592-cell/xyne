@@ -19,7 +19,7 @@ import { useState, useEffect } from "react"
 import HistoryModal from "@/components/HistoryModal"
 import { CLASS_NAMES, SELECTORS } from "../lib/constants"
 import { useTheme } from "@/components/ThemeContext"
-import { UserRole } from "shared/types"
+import { UserRole } from "../types/shared"
 import { cn } from "@/lib/utils"
 import {
   Tooltip,

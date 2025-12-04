@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button"
 import { Pencil, ArrowLeft, Square, RotateCcw, Pause, Play, RefreshCw } from "lucide-react"
 import { api, wsClient } from "@/api"
 import { getErrorMessage } from "@/lib/utils"
-import { Apps, AuthType, IngestionType, UserRole } from "shared/types"
-import { PublicUser, PublicWorkspace } from "shared/types"
+import { Apps, AuthType, IngestionType, UserRole } from "../../../../types/shared"
+import { PublicUser, PublicWorkspace } from "../../../../types/shared"
 import { Sidebar } from "@/components/Sidebar"
 import { IntegrationsSidebar } from "@/components/IntegrationsSidebar"
 import {
@@ -30,7 +30,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useQuery } from "@tanstack/react-query"
 import { OAuthModal } from "@/oauth"
-import { ConnectorStatus } from "shared/types"
+import { ConnectorStatus } from "../../../../types/shared"
 import { OAuthIntegrationStatus } from "@/types"
 import {
   Table,

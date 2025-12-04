@@ -1,4 +1,4 @@
-import { Apps } from "shared/types"
+import { Apps } from "../types/shared"
 
 export class OAuthModal {
   // private authUrl: string;

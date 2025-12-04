@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { SelectPublicMessage } from "shared/types"
+import { SelectPublicMessage } from "../types/shared"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Copy, ExternalLink, Trash2 } from "lucide-react"

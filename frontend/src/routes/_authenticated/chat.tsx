@@ -50,11 +50,11 @@ import {
   attachmentMetadataSchema,
   // Apps,
   // DriveEntity,
-} from "shared/types"
+} from "../../types/shared"
 import logo from "@/assets/logo.svg"
 import Expand from "@/assets/expand.svg"
 import Retry from "@/assets/retry.svg"
-import { PublicUser, PublicWorkspace } from "shared/types"
+import { PublicUser, PublicWorkspace } from "../../types/shared"
 import { z } from "zod"
 import { getIcon } from "@/lib/common"
 import { FeedbackModal } from "@/components/feedback/FeedbackModal"
@@ -65,7 +65,7 @@ import {
   useInfiniteQuery,
   InfiniteData,
 } from "@tanstack/react-query"
-import { SelectPublicChat } from "shared/types"
+import { SelectPublicChat } from "../../types/shared"
 import {
   fetchChats,
   pageSize,

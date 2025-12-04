@@ -43,7 +43,7 @@ import type {
   CollectionItem,
 } from "@/types/knowledgeBase"
 import { api } from "@/api"
-import { UploadStatus, UserRole } from "shared/types"
+import { UploadStatus, UserRole } from "../../types/shared"
 import DocxViewer from "@/components/DocxViewer"
 import PdfViewer from "@/components/PdfViewer"
 import ReadmeViewer from "@/components/ReadmeViewer"

@@ -28,7 +28,7 @@ import {
   AutocompleteResultsSchema,
   SearchResponse,
   SearchResultDiscriminatedUnion,
-} from "shared/types"
+} from "../../types/shared"
 import { Filter, Groups } from "@/types"
 import { SearchResult } from "@/components/SearchResult"
 import answerSparkle from "@/assets/answerSparkle.svg"
@@ -42,7 +42,7 @@ import {
   MessageSquareShare,
 } from "lucide-react"
 import { LastUpdated } from "@/components/SearchFilter"
-import { PublicUser, PublicWorkspace } from "shared/types"
+import { PublicUser, PublicWorkspace } from "../../types/shared"
 import { errorComponent } from "@/components/error"
 import { LoaderContent } from "@/lib/common"
 import { createAuthEventSource } from "@/hooks/useChatStream"

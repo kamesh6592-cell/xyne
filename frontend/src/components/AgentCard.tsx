@@ -1,5 +1,5 @@
 import { Card, CardTitle } from "@/components/ui/card"
-import { SelectPublicAgent } from "shared/types"
+import { SelectPublicAgent } from "../types/shared"
 import { Star } from "lucide-react"
 
 const getIconStyling = (agentName: string) => {

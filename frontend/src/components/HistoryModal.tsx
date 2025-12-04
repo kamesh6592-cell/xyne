@@ -5,7 +5,7 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query"
-import { SelectPublicChat } from "shared/types"
+import { SelectPublicChat } from "../types/shared"
 import { Trash2, MoreHorizontal, X, Pencil, Bot, Bookmark } from "lucide-react"
 import { useNavigate, useRouter } from "@tanstack/react-router"
 import {

@@ -7,7 +7,7 @@ import { ArrowLeft, X, ChevronDown, Loader, Sparkles } from "lucide-react"
 import { workflowToolsAPI } from "./api/ApiHandlers"
 import { api } from "../../api"
 import { createAuthEventSource } from "@/hooks/useChatStream"
-import { ChatSSEvents } from "shared/types"
+import { ChatSSEvents } from "../../types/shared"
 
 interface AIAgentConfigUIProps {
   isVisible: boolean

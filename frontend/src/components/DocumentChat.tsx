@@ -21,8 +21,8 @@ import {
   MessageFeedback,
   AttachmentMetadata,
   UploadStatus,
-} from "shared/types"
-import { PublicUser } from "shared/types"
+} from "../types/shared"
+import { PublicUser } from "../types/shared"
 import logo from "@/assets/logo.svg"
 import { EnhancedReasoning } from "@/components/EnhancedReasoning"
 import { AttachmentGallery } from "@/components/AttachmentGallery"

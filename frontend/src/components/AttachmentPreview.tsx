@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { AttachmentMetadata } from "shared/types"
+import { AttachmentMetadata } from "../types/shared"
 import {
   Eye,
 } from "lucide-react"

@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { api } from "@/api"
-import { SelectPublicMessage } from "shared/types"
+import { SelectPublicMessage } from "../types/shared"
 
 interface ChatHistoryData {
   messages: SelectPublicMessage[]

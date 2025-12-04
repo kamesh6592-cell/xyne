@@ -8,7 +8,7 @@ import type {
   UserAutocomplete,
   ChatUserAutocomplete,
   UserQueryHAutocomplete,
-} from "shared/types"
+} from "../types/shared"
 import { ForwardedRef, forwardRef } from "react"
 import { History } from "lucide-react"
 

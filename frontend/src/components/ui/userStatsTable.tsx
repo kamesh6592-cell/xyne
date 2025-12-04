@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { AuthType } from "shared/types"
+import { AuthType } from "../../types/shared"
 
 export const UserStatsTable = ({
   userStats,

@@ -10,7 +10,7 @@ import {
   SlackEntity,
   SystemEntity,
   WebSearchEntity,
-} from "shared/types"
+} from "../types/shared"
 import { Filter, Groups } from "@/types"
 import { getIcon } from "@/lib/common"
 import allFilter from "@/assets/allFilter.svg"
