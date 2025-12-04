@@ -46,8 +46,22 @@ import {
 } from "../types/shared"
 
 // Temporary placeholder types until build works
-const DriveEntity = { Default: "drive_default" } as const
-const GooglePeopleEntity = { Default: "people_default" } as const
+const DriveEntity = {
+  Default: "drive_default",
+  Docs: "docs",
+  Sheets: "sheets", 
+  Presentation: "presentation",
+  Folder: "folder",
+  WordDocument: "word_document",
+  PDF: "pdf",
+  Slides: "slides",
+  Image: "image"
+} as const
+const GooglePeopleEntity = { 
+  Default: "people_default",
+  Contacts: "contacts",
+  OtherContacts: "other_contacts" 
+} as const
 const CalendarEntity = { Default: "calendar_default" } as const
 const ConnectorType = { GoogleDrive: "google_drive" } as const
 const SystemEntity = { Default: "system_default" } as const

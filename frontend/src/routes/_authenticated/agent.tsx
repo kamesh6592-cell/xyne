@@ -33,7 +33,12 @@ import {
 } from "../../types/shared"
 
 // Temporary placeholders for build
-const DriveEntity = { Default: "drive_default" } as const
+const DriveEntity = {
+  Default: "drive_default",
+  Docs: "docs",
+  Sheets: "sheets",
+  Folder: "folder"
+} as const
 interface AgentPromptPayload {
   id: string
   prompt: string

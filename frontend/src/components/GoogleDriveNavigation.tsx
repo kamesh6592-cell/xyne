@@ -3,7 +3,10 @@ import { ChevronRight } from "lucide-react"
 import { Apps /* , DriveEntity */ } from "../types/shared"
 
 // Temporary placeholder for build
-const DriveEntity = { Default: "drive_default" } as const
+const DriveEntity = {
+  Default: "drive_default",
+  Folder: "folder"
+} as const
 import { getIcon } from "@/lib/common"
 import { api } from "@/api"
 // import { VespaFile } from "../types/shared" // Temporarily commented for build

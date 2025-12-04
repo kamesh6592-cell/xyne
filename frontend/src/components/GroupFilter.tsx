@@ -15,10 +15,27 @@ import {
 // Temporary placeholders for build
 const CalendarEntity = { Default: "calendar_default" } as const
 const DataSourceEntity = { Default: "datasource_default" } as const
-const DriveEntity = { Default: "drive_default" } as const
-const GooglePeopleEntity = { Default: "people_default" } as const
+const DriveEntity = {
+  Default: "drive_default",
+  PDF: "pdf",
+  Folder: "folder",
+  Sheets: "sheets",
+  Slides: "slides", 
+  Docs: "docs",
+  Image: "image"
+} as const
+const GooglePeopleEntity = { 
+  Default: "people_default",
+  Contacts: "contacts",
+  OtherContacts: "other_contacts" 
+} as const
 const KnowledgeBaseEntity = { Default: "knowledge_default" } as const
-const SlackEntity = { Default: "slack_default" } as const
+const SlackEntity = { 
+  Default: "slack_default",
+  Message: "message",
+  User: "user",
+  Channel: "channel"
+} as const
 const SystemEntity = { Default: "system_default" } as const
 const WebSearchEntity = { Default: "websearch_default" } as const
 import { Filter, Groups } from "@/types"

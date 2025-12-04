@@ -10,6 +10,14 @@ interface SlackEntity {
   message: string
 }
 
+// Temporary placeholder constants
+const SlackEntity = {
+  Default: "slack_default",
+  Message: "message",
+  User: "user", 
+  Channel: "channel"
+} as const
+
 interface SlackPeopleFilterProps {
   filterValue?: string
   onFilterChange: (value: string) => void
