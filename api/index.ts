@@ -5,7 +5,7 @@ import { cors } from 'hono/cors'
 // Import server routes - we'll need to make these compatible with serverless
 // For now, let's create a comprehensive API structure that matches the original
 
-const app = new Hono().basePath('/api')
+const app = new Hono()
 
 // Configure CORS
 app.use('*', cors({
