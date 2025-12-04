@@ -468,6 +468,13 @@ class CallNotificationClient {
     this.connectionInitialized = true
 
     try {
+      // Skip WebSocket connection in production/serverless environments like Vercel
+      if (window.location.hostname.includes('vercel.app') || window.location.hostname.includes('netlify.app')) {
+        console.log('Skipping WebSocket connection in serverless environment')
+        this.connectionInitialized = false
+        return
+      }
+      
       // Use the same origin but with ws protocol
       const wsUrl = `${window.location.protocol === "https:" ? "wss:" : "ws:"}//${window.location.host}/ws/calls`
       this.ws = new WebSocket(wsUrl)
