@@ -5,7 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { getFileType } from "shared/fileUtils"
+import { getFileType } from "../types/shared"
 import { FileType } from "shared/types"
 
 export interface Citation {

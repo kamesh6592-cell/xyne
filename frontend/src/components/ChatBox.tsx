@@ -61,7 +61,7 @@ import {
 import { SmartTooltip } from "@/components/ui/smart-tooltip"
 import { getIcon } from "@/lib/common"
 import { CLASS_NAMES, SELECTORS } from "../lib/constants"
-import { DriveEntity } from "shared/types"
+import { DriveEntity } from "../types/shared"
 import { api } from "@/api"
 import { Input } from "@/components/ui/input"
 import { Pill } from "./Pill"
@@ -75,7 +75,7 @@ import {
   createImagePreview,
   cleanupPreviewUrls,
 } from "@/utils/fileUtils"
-import { getFileType } from "shared/fileUtils"
+import { getFileType } from "../types/shared"
 import { authFetch } from "@/utils/authFetch"
 
 interface SelectedFile {

@@ -1,4 +1,4 @@
-import { Apps, AuthType, Entity } from "shared/types"
+import { Apps, AuthType, Entity } from "./types/shared"
 import { z } from "zod"
 import { LastUpdated } from "@/components/SearchFilter"
 

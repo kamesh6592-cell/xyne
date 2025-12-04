@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { getFileType } from "shared/fileUtils"
+import { getFileType } from "../types/shared"
 import { getFileIcon } from "@/components/ChatBox"
 
 interface AttachmentPreviewProps {

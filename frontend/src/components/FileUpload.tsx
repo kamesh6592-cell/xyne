@@ -11,7 +11,7 @@ import {
   createImagePreview,
   cleanupPreviewUrls,
 } from "@/utils/fileUtils"
-import { isValidFile } from "shared/fileUtils"
+import { isValidFile } from "../types/shared"
 import { authFetch } from "@/utils/authFetch"
 
 interface SelectedFile {

@@ -13,7 +13,7 @@ import vectorIcon from "@/assets/vector.svg"
 import playIcon from "@/assets/play.svg"
 import emptyStateIcon from "@/assets/empty-state.svg"
 import { ChevronDown, Plus, Layout, ChevronRight, Search } from "lucide-react"
-import { UserMetadata, UserWorkflowRole } from "@/server/shared/types"
+import { UserMetadata, UserWorkflowRole } from "../../types/shared"
 
 interface WorkflowTemplate {
   id: string;

@@ -104,8 +104,13 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         external: mode === 'production' ? [
           '@xyne/vespa-ts/types',
-          'shared/types'
+          'zod'
         ] : [],
+        output: {
+          paths: {
+            'zod': 'https://esm.sh/zod@3.23.8'
+          }
+        }
       },
     },
     resolve: {

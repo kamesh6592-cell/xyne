@@ -37,7 +37,7 @@ import {
   deleteCollection,
   deleteItem,
 } from "@/utils/fileUtils"
-import { isValidFile } from "shared/fileUtils"
+import { isValidFile } from "../../types/shared"
 import type {
   Collection as CollectionType,
   CollectionItem,

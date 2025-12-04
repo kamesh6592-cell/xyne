@@ -2,7 +2,7 @@ import { useState, useCallback, useRef, ChangeEvent } from "react"
 import { X, FileUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import FileUploadSkeleton from "@/components/FileUploadSkeleton"
-import { isValidFile } from "../../../server/shared/fileUtils"
+import { isValidFile } from "../types/shared"
 import { getFileIcon } from "@/lib/common"
 import { SmartTooltip } from "./ui/smart-tooltip"
 
