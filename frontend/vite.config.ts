@@ -104,25 +104,18 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         external: mode === 'production' ? [
           '@xyne/vespa-ts/types',
-          'shared/types',
-          'zod'
+          'shared/types'
         ] : [],
       },
     },
     resolve: {
       alias: {
         "@": path.resolve(import.meta.dirname, "./src"),
-        "@/server": mode === 'production' 
-          ? path.resolve(import.meta.dirname, "./src/types") 
-          : path.resolve(import.meta.dirname, "../server"),
-        "search/types": mode === 'production'
-          ? path.resolve(import.meta.dirname, "./src/types/shared")
-          : path.resolve(import.meta.dirname, "../server/search/types"),
+        "@/server": path.resolve(import.meta.dirname, "./src/types"),
+        "search/types": path.resolve(import.meta.dirname, "./src/types/shared"),
         "shared/types": path.resolve(import.meta.dirname, "./src/types/shared"),
         "shared/fileUtils": path.resolve(import.meta.dirname, "./src/utils/fileUtils"),
-        shared: mode === 'production'
-          ? path.resolve(import.meta.dirname, "./src/types")
-          : path.resolve(import.meta.dirname, "../server/shared"),
+        shared: path.resolve(import.meta.dirname, "./src/types"),
         react: path.resolve(import.meta.dirname, "./node_modules/react"),
       },
     },

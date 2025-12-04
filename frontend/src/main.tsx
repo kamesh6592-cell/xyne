@@ -11,6 +11,15 @@ import UploadProgressWidget from "@/components/UploadProgressWidget"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
+// Add error logging for debugging
+window.addEventListener('error', (e) => {
+  console.error('Global error:', e.error)
+})
+
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled promise rejection:', e.reason)
+})
+
 const queryClient = new QueryClient({})
 
 // Create a new router instance
