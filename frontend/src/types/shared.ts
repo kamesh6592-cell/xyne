@@ -68,26 +68,7 @@ export enum FileType {
   IMAGE = "image"
 }
 
-export enum ChatSSEvents {
-  ResponseMetadata = "rm",
-  Start = "s",
-  ResponseUpdate = "u",
-  End = "e",
-  ChatTitleUpdate = "ct",
-  CitationsUpdate = "cu",
-  ImageCitationUpdate = "icu",
-  Reasoning = "rz",
-  DeepResearchReasoning = "drr",
-  Error = "er",
-  AttachmentUpdate = "au",
-  ClarificationRequested = "cr",
-  ClarificationProvided = "cp",
-}
-
-export enum MessageFeedback {
-  Like = "like",
-  Dislike = "dislike",
-}
+// Removed duplicate enum definitions - using interfaces instead
 
 // Interfaces
 export interface PublicUser {
