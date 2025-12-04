@@ -11,14 +11,19 @@ import UploadProgressWidget from "@/components/UploadProgressWidget"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
-// Add error logging for debugging
+// Add comprehensive error logging for debugging
 window.addEventListener('error', (e) => {
-  console.error('Global error:', e.error)
+  console.error('Global error:', e.error, 'at', e.filename, e.lineno, e.colno)
+  document.body.innerHTML += `<div style="background: red; color: white; padding: 10px;">Error: ${e.error?.message || 'Unknown error'}</div>`
 })
 
 window.addEventListener('unhandledrejection', (e) => {
   console.error('Unhandled promise rejection:', e.reason)
+  document.body.innerHTML += `<div style="background: orange; color: white; padding: 10px;">Promise rejection: ${e.reason}</div>`
 })
+
+// Log when the script starts
+console.log('Main script starting...')
 
 const queryClient = new QueryClient({})
 
@@ -37,7 +42,13 @@ const App = () => {
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+          <h1>Xyne App - Debug Mode</h1>
+          <p>If you can see this, the basic React app is working!</p>
+          <div style={{ marginTop: '20px' }}>
+            <RouterProvider router={router} />
+          </div>
+        </div>
         <Toaster />
         <UploadProgressWidget />
       </QueryClientProvider>
