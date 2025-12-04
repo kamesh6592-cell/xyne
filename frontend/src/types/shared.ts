@@ -86,12 +86,22 @@ export enum ChatSSEvents {
 
 export enum AnswerSSEvents {
   Start = "start",
-  AnswerUpdate = "answer_update",
+  AnswerUpdate = "answer_update", 
   End = "end",
   Error = "error",
 }
 
-// Interfaces
+export enum AgentReasoningStepType {
+  LogMessage = "log_message",
+  Iteration = "iteration", 
+  ToolExecuting = "tool_executing",
+}
+
+export enum XyneTools {
+  GetUserInfo = "get_user_info",
+  Search = "search",
+  FilteredSearch = "filtered_search",
+}// Interfaces
 export interface PublicUser {
   id: string
   email: string
@@ -298,17 +308,9 @@ export interface VespaFile {
 
 // ChatSSEvents is defined as enum above for constants
 
-export interface AgentReasoningStepType {
-  step: string
-  description: string
-  result?: any
-}
+// AgentReasoningStepType is defined as enum above
 
-export interface XyneTools {
-  id: string
-  name: string
-  description: string
-}
+// XyneTools is defined as enum above
 
 export interface ModelConfiguration {
   id: string
