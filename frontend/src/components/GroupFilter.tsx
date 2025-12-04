@@ -1,16 +1,26 @@
 import {
   Apps,
-  CalendarEntity,
-  DataSourceEntity,
-  DriveEntity,
+  // CalendarEntity,
+  // DataSourceEntity,
+  // DriveEntity,
   Entity,
-  GooglePeopleEntity,
+  // GooglePeopleEntity,
   isMailAttachment,
-  KnowledgeBaseEntity,
-  SlackEntity,
-  SystemEntity,
-  WebSearchEntity,
+  // KnowledgeBaseEntity,
+  // SlackEntity,
+  // SystemEntity,
+  // WebSearchEntity,
 } from "../types/shared"
+
+// Temporary placeholders for build
+const CalendarEntity = { Default: "calendar_default" } as const
+const DataSourceEntity = { Default: "datasource_default" } as const
+const DriveEntity = { Default: "drive_default" } as const
+const GooglePeopleEntity = { Default: "people_default" } as const
+const KnowledgeBaseEntity = { Default: "knowledge_default" } as const
+const SlackEntity = { Default: "slack_default" } as const
+const SystemEntity = { Default: "system_default" } as const
+const WebSearchEntity = { Default: "websearch_default" } as const
 import { Filter, Groups } from "@/types"
 import { getIcon } from "@/lib/common"
 import allFilter from "@/assets/allFilter.svg"

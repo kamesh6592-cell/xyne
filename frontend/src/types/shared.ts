@@ -68,7 +68,21 @@ export enum FileType {
   IMAGE = "image"
 }
 
-// Removed duplicate enum definitions - using interfaces instead
+export enum ChatSSEvents {
+  ResponseMetadata = "rm",
+  Start = "s",
+  ResponseUpdate = "u",
+  End = "e",
+  ChatTitleUpdate = "ct",
+  CitationsUpdate = "cu",
+  ImageCitationUpdate = "icu",
+  Reasoning = "rz",
+  DeepResearchReasoning = "drr",
+  Error = "er",
+  AttachmentUpdate = "au",
+  ClarificationRequested = "cr",
+  ClarificationProvided = "cp",
+}
 
 // Interfaces
 export interface PublicUser {
@@ -154,6 +168,18 @@ export interface WebSearchEntity {
   title: string
   url: string
   snippet?: string
+}
+
+export interface KnowledgeBaseEntity {
+  id: string
+  title: string
+  content: string
+}
+
+export interface SlackEntity {
+  id: string
+  channel: string
+  message: string
 }
 
 // Search result types
@@ -263,10 +289,7 @@ export interface VespaFile {
   metadata?: Record<string, any>
 }
 
-export interface ChatSSEvents {
-  type: string
-  data: any
-}
+// ChatSSEvents is defined as enum above for constants
 
 export interface AgentReasoningStepType {
   step: string
