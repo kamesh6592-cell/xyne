@@ -8,7 +8,16 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { MessageFeedback } from "../../types/shared"
+// import { MessageFeedback } from "../../types/shared" // Temporarily commented for build
+
+// Temporary placeholder type for build
+interface MessageFeedback {
+  id: string
+  messageId: string
+  userId: string
+  rating: 'positive' | 'negative'
+  comment?: string
+}
 
 // Simple checkbox component
 const Checkbox = ({

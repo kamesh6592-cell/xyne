@@ -339,6 +339,17 @@ export const dataSourceFileSchema = {
   }
 } as const
 
+export const attachmentMetadataSchema = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    filename: { type: "string" },
+    mimeType: { type: "string" },
+    size: { type: "number" },
+    url: { type: "string" }
+  }
+} as const
+
 export const AutocompleteResultsSchema = {
   type: "object",
   properties: {

@@ -45,12 +45,21 @@ import {
   SelectPublicMessage,
   Citation,
   ImageCitation,
-  MessageFeedback,
+  // MessageFeedback, // Temporarily commented for build
   AttachmentMetadata,
   attachmentMetadataSchema,
   // Apps,
   // DriveEntity,
 } from "../../types/shared"
+
+// Temporary placeholder for build
+interface MessageFeedback {
+  id: string
+  messageId: string  
+  userId: string
+  rating: 'positive' | 'negative'
+  comment?: string
+}
 import logo from "@/assets/logo.svg"
 import Expand from "@/assets/expand.svg"
 import Retry from "@/assets/retry.svg"
