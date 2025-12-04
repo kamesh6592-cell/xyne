@@ -16,7 +16,7 @@ import {
   ChevronRight as ChevronRightIcon,
   ClipboardCopy,
 } from "lucide-react"
-import ReactJson from "react-json-view"
+import { JSONTree } from "react-json-tree"
 
 interface TraceSpan {
   traceId?: string
@@ -475,7 +475,7 @@ const AttributeModal: React.FC<AttributeModalProps> = ({
       if (parsed.yql) {
         displayValue = formatYqlQuery(parsed.yql)
       } else {
-        // For vespaPayload that is not YQL, we'll use ReactJson if it's an object
+        // For vespaPayload that is not YQL, we'll use JSONTree if it's an object
         try {
           const potentialJson = JSON.parse(attributeValue)
           if (typeof potentialJson === "object" && potentialJson !== null) {
@@ -593,14 +593,44 @@ const AttributeModal: React.FC<AttributeModalProps> = ({
         <div className="flex-1 overflow-auto bg-gray-50 dark:bg-gray-900 p-4 rounded border border-gray-200 dark:border-gray-600">
           {isJson ? (
             <div className="max-h-full overflow-y-auto text-sm font-mono bg-white dark:bg-gray-800 p-2 rounded border border-gray-200 dark:border-gray-600">
-              <ReactJson
-                src={displayValue}
-                theme={darkMode ? "ocean" : "summerfruit:inverted"}
-                indentWidth={2}
-                displayDataTypes={false}
-                name={false}
-                enableClipboard={false}
-                style={{ backgroundColor: darkMode ? "#1f2937" : "#ffffff" }}
+              <JSONTree
+                data={displayValue}
+                theme={darkMode ? {
+                  base00: '#1f2937',
+                  base01: '#374151', 
+                  base02: '#4b5563',
+                  base03: '#6b7280',
+                  base04: '#9ca3af',
+                  base05: '#d1d5db',
+                  base06: '#e5e7eb',
+                  base07: '#f3f4f6',
+                  base08: '#ef4444',
+                  base09: '#f97316',
+                  base0A: '#eab308',
+                  base0B: '#22c55e',
+                  base0C: '#06b6d4',
+                  base0D: '#3b82f6', 
+                  base0E: '#8b5cf6',
+                  base0F: '#f59e0b'
+                } : {
+                  base00: '#ffffff',
+                  base01: '#f8fafc', 
+                  base02: '#e2e8f0',
+                  base03: '#cbd5e1',
+                  base04: '#64748b',
+                  base05: '#475569',
+                  base06: '#334155',
+                  base07: '#1e293b',
+                  base08: '#dc2626',
+                  base09: '#ea580c',
+                  base0A: '#ca8a04',
+                  base0B: '#16a34a',
+                  base0C: '#0891b2',
+                  base0D: '#2563eb', 
+                  base0E: '#7c3aed',
+                  base0F: '#d97706'
+                }}
+                hideRoot={true}
               />
             </div>
           ) : isUrl ? (
@@ -1651,18 +1681,44 @@ export function RagTraceVirtualization({
           </button>
         </div>
         <div className="text-sm font-mono text-gray-700 dark:text-gray-200">
-          <ReactJson
-            src={rawTraceData}
-            theme={darkMode ? "ocean" : "summerfruit:inverted"}
-            indentWidth={2}
-            displayDataTypes={false}
-            name={false}
-            enableClipboard={false} // Using custom copy button
-            style={{
-              backgroundColor: darkMode
-                ? "rgb(31 41 55 / 1)"
-                : "rgb(249 250 251 / 1)",
-            }} // Match tab background
+          <JSONTree
+            data={rawTraceData}
+            theme={darkMode ? {
+              base00: 'rgb(31 41 55 / 1)',
+              base01: '#374151', 
+              base02: '#4b5563',
+              base03: '#6b7280',
+              base04: '#9ca3af',
+              base05: '#d1d5db',
+              base06: '#e5e7eb',
+              base07: '#f3f4f6',
+              base08: '#ef4444',
+              base09: '#f97316',
+              base0A: '#eab308',
+              base0B: '#22c55e',
+              base0C: '#06b6d4',
+              base0D: '#3b82f6', 
+              base0E: '#8b5cf6',
+              base0F: '#f59e0b'
+            } : {
+              base00: 'rgb(249 250 251 / 1)',
+              base01: '#f8fafc', 
+              base02: '#e2e8f0',
+              base03: '#cbd5e1',
+              base04: '#64748b',
+              base05: '#475569',
+              base06: '#334155',
+              base07: '#1e293b',
+              base08: '#dc2626',
+              base09: '#ea580c',
+              base0A: '#ca8a04',
+              base0B: '#16a34a',
+              base0C: '#0891b2',
+              base0D: '#2563eb', 
+              base0E: '#7c3aed',
+              base0F: '#d97706'
+            }}
+            hideRoot={true}
           />
         </div>
       </div>

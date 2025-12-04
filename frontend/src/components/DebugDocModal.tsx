@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { authFetch } from "@/utils/authFetch"
 import { Copy } from "lucide-react"
-import ReactJsonView from "react-json-view"
+import { JSONTree } from "react-json-tree"
 
 interface DebugDocModalProps {
   documentId: string | null
@@ -180,14 +180,28 @@ export function DebugDocModal({
             </div>
           ) : vespaData ? (
             <div className="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-              <ReactJsonView
-                src={vespaData}
-                theme="rjv-default"
-                displayDataTypes={false}
-                displayObjectSize={false}
-                enableClipboard={false}
-                name={false}
-                collapsed={1}
+              <JSONTree
+                data={vespaData}
+                theme={{
+                  base00: '#ffffff',
+                  base01: '#f5f5f5', 
+                  base02: '#c0c0c0',
+                  base03: '#b0b0b0',
+                  base04: '#000000',
+                  base05: '#000000',
+                  base06: '#000000',
+                  base07: '#000000',
+                  base08: '#d73a49',
+                  base09: '#e36209',
+                  base0A: '#ffd33d',
+                  base0B: '#28a745',
+                  base0C: '#17a2b8',
+                  base0D: '#0366d6', 
+                  base0E: '#6f42c1',
+                  base0F: '#6c6c6c'
+                }}
+                hideRoot={true}
+                shouldExpandNodeInitially={() => false}
               />
             </div>
           ) : (

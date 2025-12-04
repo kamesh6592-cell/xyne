@@ -100,15 +100,29 @@ export default defineConfig(({ mode }) => {
     optimizeDeps: {
       exclude: ["zod"],
     },
+    build: {
+      rollupOptions: {
+        external: mode === 'production' ? [
+          '@xyne/vespa-ts/types',
+          'shared/types',
+          'zod'
+        ] : [],
+      },
+    },
     resolve: {
       alias: {
         "@": path.resolve(import.meta.dirname, "./src"),
-        "@/server": path.resolve(import.meta.dirname, "../server"),
-        "search/types": path.resolve(
-          import.meta.dirname,
-          "../server/search/types",
-        ),
-        shared: path.resolve(import.meta.dirname, "../server/shared"),
+        "@/server": mode === 'production' 
+          ? path.resolve(import.meta.dirname, "./src/types") 
+          : path.resolve(import.meta.dirname, "../server"),
+        "search/types": mode === 'production'
+          ? path.resolve(import.meta.dirname, "./src/types/shared")
+          : path.resolve(import.meta.dirname, "../server/search/types"),
+        "shared/types": path.resolve(import.meta.dirname, "./src/types/shared"),
+        "shared/fileUtils": path.resolve(import.meta.dirname, "./src/utils/fileUtils"),
+        shared: mode === 'production'
+          ? path.resolve(import.meta.dirname, "./src/types")
+          : path.resolve(import.meta.dirname, "../server/shared"),
         react: path.resolve(import.meta.dirname, "./node_modules/react"),
       },
     },

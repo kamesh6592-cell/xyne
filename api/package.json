@@ -1,0 +1,12 @@
+{
+  "name": "xyne-api",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "hono": "^4.6.15"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0",
+    "typescript": "^5.7.2"
+  }
+}

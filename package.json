@@ -1,0 +1,19 @@
+{
+  "name": "xyne-vercel",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd frontend && npm run build:vercel",
+    "dev": "cd frontend && npm run dev",
+    "start": "cd frontend && npm run preview"
+  },
+  "dependencies": {
+    "hono": "^4.6.15"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.0.0",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,7 +1,92 @@
-import { isValidFile, isImageFile } from "shared/fileUtils"
 import { SelectedFile } from "@/components/ClFileUpload"
 import { authFetch } from "./authFetch"
-import { UploadStatus } from "shared/types"
+import { UploadStatus } from "@/types/shared"
+
+// File type enums
+export enum FileType {
+  TEXT = "text",
+  PDF = "pdf",
+  DOCUMENT = "document",
+  SPREADSHEET = "spreadsheet", 
+  PRESENTATION = "presentation",
+  IMAGE = "image",
+  FILE = "file"
+}
+
+// Simplified file validation for frontend
+export const isImageFile = (fileType: string): boolean => {
+  const imageTypes = [
+    'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 
+    'image/webp', 'image/bmp', 'image/svg+xml'
+  ]
+  return imageTypes.includes(fileType.toLowerCase())
+}
+
+export const getFileType = ({ type, name }: { type: string, name: string }): FileType => {
+  const fileName = name.toLowerCase()
+  const mimeType = type.toLowerCase()
+  const baseMime = mimeType.split(";")[0]
+
+  // Check MIME types
+  if (baseMime.startsWith('text/')) return FileType.TEXT
+  if (baseMime === 'application/pdf') return FileType.PDF
+  if (baseMime.includes('word') || baseMime.includes('document')) return FileType.DOCUMENT
+  if (baseMime.includes('sheet') || baseMime.includes('excel')) return FileType.SPREADSHEET
+  if (baseMime.includes('presentation') || baseMime.includes('powerpoint')) return FileType.PRESENTATION
+  if (baseMime.startsWith('image/')) return FileType.IMAGE
+
+  // Check extensions
+  if (fileName.endsWith('.txt') || fileName.endsWith('.md') || fileName.endsWith('.csv')) return FileType.TEXT
+  if (fileName.endsWith('.pdf')) return FileType.PDF
+  if (fileName.endsWith('.doc') || fileName.endsWith('.docx') || fileName.endsWith('.odt')) return FileType.DOCUMENT
+  if (fileName.endsWith('.xls') || fileName.endsWith('.xlsx') || fileName.endsWith('.ods')) return FileType.SPREADSHEET
+  if (fileName.endsWith('.ppt') || fileName.endsWith('.pptx') || fileName.endsWith('.odp')) return FileType.PRESENTATION
+  if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) return FileType.IMAGE
+
+  return FileType.FILE
+}
+
+export const isValidFile = (file: File) => {
+  const maxGeneralSize = 40 * 1024 * 1024 // 40MB
+  const maxImageSize = 5 * 1024 * 1024 // 5MB
+
+  const allowedMimeTypes = [
+    // Text files
+    'text/plain', 'text/csv', 'text/markdown', 'text/xml', 'text/html',
+    // PDF files
+    'application/pdf',
+    // Document files
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.oasis.opendocument.text',
+    // Spreadsheet files
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.oasis.opendocument.spreadsheet',
+    // Presentation files
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    'application/vnd.oasis.opendocument.presentation',
+    // Image files
+    'image/jpeg', 'image/jpg', 'image/png', 'image/gif', 
+    'image/webp', 'image/bmp', 'image/svg+xml'
+  ]
+
+  const allowedExtensions = [
+    '.txt', '.csv', '.md', '.xml', '.html', '.pdf', 
+    '.doc', '.docx', '.odt', '.xls', '.xlsx', '.ods',
+    '.ppt', '.pptx', '.odp', '.jpg', '.jpeg', '.png', 
+    '.gif', '.webp', '.bmp', '.svg'
+  ]
+
+  const isImage = isImageFile(file.type)
+  const isAllowedType = allowedMimeTypes.includes(file.type) ||
+    allowedExtensions.some(ext => file.name.toLowerCase().endsWith(ext))
+
+  const sizeLimit = isImage ? maxImageSize : maxGeneralSize
+
+  return file.size <= sizeLimit && isAllowedType
+}
 
 // Generate unique ID for files
 export const generateFileId = () => Math.random().toString(36).substring(2, 9)
