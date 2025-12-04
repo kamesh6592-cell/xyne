@@ -84,6 +84,13 @@ export enum ChatSSEvents {
   ClarificationProvided = "cp",
 }
 
+export enum AnswerSSEvents {
+  Start = "start",
+  AnswerUpdate = "answer_update",
+  End = "end",
+  Error = "error",
+}
+
 // Interfaces
 export interface PublicUser {
   id: string
